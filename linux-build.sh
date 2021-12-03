@@ -26,6 +26,8 @@ if [[ $1 = "32" ]] || [[ $1 = "x86" ]]; then
     CONFIG=${CONFIG}_x86
 elif [[ $1 = "64" ]] || [[ $1 = "x64" ]]; then
     CONFIG=${CONFIG}_x64
+	elif [[ $1 = "ARM64" ]] || [[ $1 = "aarch64" ]]; then 
+    CONFIG=${CONFIG}_ARM64
 elif [[ $1 != "" ]]; then
     printf "Unknown architecture \"$1\" provided\n"
     exit 1

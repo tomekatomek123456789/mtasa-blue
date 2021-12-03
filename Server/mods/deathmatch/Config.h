@@ -37,7 +37,7 @@ public:
     {
         try
         {            // to avoid access violation
-            memcpy(&svapassnext, args, sizeof(svapassnext));
+            memcpy(&svapassnext, &args, sizeof(svapassnext));
         }
         catch (...)
         {

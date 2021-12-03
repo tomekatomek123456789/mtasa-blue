@@ -23,6 +23,8 @@ workspace "MTASA"
 	if os.host() == "macosx" then
 		removeplatforms { "x86" }
 	end
+	
+	
 
 	targetprefix ""
 
@@ -61,7 +63,7 @@ workspace "MTASA"
 		filter { "system:linux", "platforms:x64" }
 			libdirs { "/compat/x64" }
 		filter { "system:linux", "platforms:ARM64" }
-			libdirs { "/compat/aarch64-linux-gnu" }
+			libdirs { "/lib/aarch64-linux-gnu/" }
 	end
 
 	filter "platforms:x86"
@@ -85,6 +87,9 @@ workspace "MTASA"
 		filter { "system:linux" }
 			linkoptions { "-s" }
 	end
+	
+	filter {"system:linux", "platforms:ARM64"}
+		buildoptions {"-fvisibility=hidden -march=armv8-a+crc+crypto -mtune=cortex-a57"}
 
 	filter {"system:windows", "configurations:Nightly", "kind:not StaticLib"}
 		os.mkdir("Build/Symbols")
@@ -106,9 +111,10 @@ workspace "MTASA"
 		runtime "Release" -- Always use Release runtime
 		defines { "DEBUG" } -- Using DEBUG as _DEBUG is not available with /MT
 
-	filter "system:linux"
+	filter {"system:linux", "platforms:x86 or platforms:x64"}
 		vectorextensions "SSE2"
 		buildoptions { "-fvisibility=hidden" }
+	
 
 	-- Only build the client on Windows
 	if os.target() == "windows" then
