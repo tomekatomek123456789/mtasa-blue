@@ -50,7 +50,7 @@ Prerequisites
 Building MTA:SA is only supported on 64-bit Linux OSes. You can however cross-compile a 32-bit version using _gcc-multilib_.
 1. Execute `utils/premake5 gmake`
 2. `cd Build`
-3. Run `make config=release_x86` to build the 32-bit server and `make config=release_x64` to build the 64-bit server (or use `debug` instead of `release` to run an unoptimized debug build)
+3. Run `make config=release_x86` to build the 32-bit server , `make config=release_x64` to build the 64-bit server and `make config=release_arm64` to build the arm64 server (or use `debug` instead of `release` to run an unoptimized debug build).  ARM64 build works propely using debug profile( I don't know what it is, but i'm trying to repair this)
 4. Execute `linux-install-data.sh` (optional step).
 
 #### Linux: Docker Build Environment
