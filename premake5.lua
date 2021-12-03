@@ -19,7 +19,7 @@ GLIBC_COMPAT = os.getenv("GLIBC_COMPAT") == "true"
 workspace "MTASA"
 	configurations {"Debug", "Release", "Nightly"}
 
-	platforms { "x86", "x64"}
+	platforms { "x86", "x64", "ARM64"}
 	if os.host() == "macosx" then
 		removeplatforms { "x86" }
 	end
@@ -60,12 +60,16 @@ workspace "MTASA"
 			libdirs { "/compat/x86" }
 		filter { "system:linux", "platforms:x64" }
 			libdirs { "/compat/x64" }
+		filter { "system:linux", "platforms:ARM64" }
+			libdirs { "/compat/aarch64-linux-gnu" }
 	end
 
 	filter "platforms:x86"
 		architecture "x86"
 	filter "platforms:x64"
 		architecture "x86_64"
+	filter "platforms:ARM64"
+		architecture "ARM64"
 
 	filter "configurations:Debug"
 		defines { "MTA_DEBUG" }
