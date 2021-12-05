@@ -143,7 +143,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: uraimo/run-on-arch-action@v2.0.5
-      - name: Run Build
+        name: Run Build
         id: runcmd
         with:
           arch: aarch64
@@ -157,7 +157,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: uraimo/run-on-arch-action@v2.0.5
-      - name: Run Build
+        name: Run Build
         with:
           arch: aarch64
           distro: ubuntu20.04
